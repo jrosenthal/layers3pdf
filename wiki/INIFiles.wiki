@@ -1,0 +1,20 @@
+#summary A description of the INI file structure used by Layers3PDF to build a Layered PDF
+#labels Phase-Deploy
+
+= INI File Description =
+
+Layers3PDF builds a Layered PDF from a series of PDFs.  The list of these component PDFs, and the settings to apply in constructed the Layered PDF are contained in the INI file.  An INI file is composed of `|` delimited variable pairs, connected to their value with an `=`.  White space is allowed in values.
+
+
+= INI Construction =
+
+== Line 1: File Variables == 
+
+The first line of the INI holds variables that relate to the Layered PDF as a whole (file variables), later lines hold variables that relate to specific layers.
+
+File Variables include:
+`path, title, author, subject, user_pass, owner_pass`
+
+  * *path=*  The file variable `path` must reference a blank (transparent/empty) pdf of the same dimensions of all layers.  Path follows standard directory structure.  White spaces in file paths are allowed.
+  * *title=*  The file variable `title` will be used to set the PDF Document Title, as seen in Document Properties when viewing the PDF.
+  * *author=*  The file variable `author` will be used to set the PDF Document Author, as seen in Document Properties when viewing the PDF.
