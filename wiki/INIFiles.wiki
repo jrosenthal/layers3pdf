@@ -28,4 +28,7 @@ File Variables include:
 
 All additional lines of the INI hold variables that define the specific layer of the PDF.
 
+Layer Variables include:
+`path, name, export, print_type, print_state, view, min_zoom, max_zoom, on_panel, locked`
+
 ... this page is under development.
