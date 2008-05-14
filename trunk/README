@@ -1,0 +1,24 @@
+To compile:
+
+UNIX:
+-----
+gcj --classpath=.:lib:lib/itext_new.jar:lib/bcprov_new1.4.jar -C src/Layers3PDF.java   (or)
+javac -cp .:lib:lib/itext_new.jar:lib/bcprov_new1.4.jar src/Layers3PDF.java
+
+Windows:
+--------
+javac -cp .;lib;lib\itext_new.jar;lib\bcprov_new1.4.jar src\Layers3PDF.java
+
+To run (once compiled):
+-----------------------
+cd src
+
+then,
+
+UNIX:
+-----
+java -cp .:../lib:../lib/itext_new.jar:../lib/bcprov_new1.4.jar Layers3PDF <INI_FILE> <OUTPUT_FILE> (or)
+gij --classpath .:../lib:../lib/itext_new.jar:../lib/bcprov_new1.4.jar Layers3PDF
+
+Windows:
+java -cp .:..\lib:..\lib\itext_new.jar:..\lib\bcprov_new1.4.jar Layers3PDF <INI_FILE> <OUTPUT_FILE>
