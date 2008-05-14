@@ -19,6 +19,9 @@ File Variables include:
   * *title=*  The file variable `title` will be used to set the PDF Document Title, as seen in Document Properties when viewing the PDF.
   * *author=*  The file variable `author` will be used to set the PDF Document Author, as seen in Document Properties when viewing the PDF.
   * *subject=* The file variable `subject` will be used to set the PDF Document Subject, as seen in Document Properties when viewing the PDF.  This may be relevant for keyword searches.
-  * *user_pass=* & *owner_pass=*  The file variables `user_pass` and `owner_pass` are used to control a user's ability to view and edit the LayeredPDF.  This is also known as encrypting/locking the PDF.  If `owner_pass` is set, a user must enter the `owner_pass` to modify the PDF using Acrobat.  If `user_pass` is set, a user must enter the `user_pass` to open and view the PDF.  If `user_pass` is set, and no `owner_pass` is set, Layers3PDF will generate one randomly, thus locking the file from editing.
+  * *user_pass=* & *owner_pass=*  The file variables `user_pass` and `owner_pass` are used to control a user's ability to view and edit the LayeredPDF.  This is also known as encrypting/locking the PDF.  
+   * If `owner_pass` is set, a user must enter the `owner_pass` to modify the PDF using Acrobat.  
+   * If `user_pass` is set, a user must enter the `user_pass` to open and view the PDF.  
+   * If `user_pass` is set, and no `owner_pass` is set, Layers3PDF will generate one randomly, thus locking the file from editing.
 
 ... this page is under development.
