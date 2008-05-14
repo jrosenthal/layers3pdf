@@ -3,7 +3,7 @@
 
 = INI File Description =
 
-Layers3PDF builds a Layered PDF from a series of PDFs.  The list of these component PDFs, and the settings to apply in constructed the Layered PDF are contained in the INI file.  An INI file is composed of at least two lines of `|` delimited variable pairs, connected to their value with an `=`.  White space is allowed in values.  Only the path variable is required for every line in the INI file, all other variables are set to defaults if not defined.  The first line defines the file, additional lines define the individual layers.  The order in which layers are defined represents the order in which the appear in the Layered PDF.  Those layers defined first will be, in effect, further back on the stack, and layers defined later will appear on top of them.
+Layers3PDF builds a Layered PDF from a series of PDFs.  The list of these component PDFs, and the settings to apply in constructing the Layered PDF are contained in the INI file.  An INI file is composed of at least two lines of `|` delimited variable pairs, connected to their value with an `=`.  White space is allowed in values.  Only the path variable is required for every line in the INI file, all other variables are set to defaults if not defined.  The first line defines the file, additional lines define the individual layers.  The order in which layers are defined represents the order in which the appear in the Layered PDF.  Those layers defined first will be, in effect, further back on the stack, and layers defined later will appear on top of them.
 
 
 = INI Construction =
