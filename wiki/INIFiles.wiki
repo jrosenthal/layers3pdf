@@ -30,8 +30,8 @@ All additional lines of the INI hold variables that define the specific layer of
 
 Layer Variables include:
 `path, name, export, print_type, print_state, view, min_zoom, max_zoom, on_panel, (locked)`
-  * *path=*
-  * *name=*
+  * *path=*  The layer variable `path` must be the filepath for a _transparent_ pdf containing just the features in this layer.
+  * *name=*  The layer variable `name` con
   * *export=*
   * *print_type=*
   * *print_state=*
