@@ -20,9 +20,10 @@ public class Layers3PDF
       Document document = null;
       String[] template_keys = { "path", "title", "author", "subject", "user_pass", "owner_pass" };
       String[] keys = { "path", "name", "export", "print_type", "print_state",
-                        "view", "min_zoom", "max_zoom", "visible" };
+                        "view", "min_zoom", "max_zoom", "visible", "group" };
 
-      HashMap<String,PdfOCG> name_map = new HashMap<String,PdfOCG>();
+      // this holds the layers that are on the panel to control merged layers
+      HashMap<String,PdfLayer> group_map = new HashMap<String,PdfLayer>();
 
       try 
       {
@@ -36,7 +37,7 @@ public class Layers3PDF
          try
          {
             int layer_count = 0;
-            while( ini.ready() )
+            while( ini.ready() ) 
             {
                String line = ini.readLine();
                if( line.matches( "^[ \t]*#.*" ) ) // comments allowed (lines starting with #)
@@ -122,77 +123,94 @@ public class Layers3PDF
                Rectangle page_size = reader.getPageSize( 1 );
                PdfLayer layer = null;
 
-               // look and see if we've seen this name before
-               PdfOCG lookup = name_map.get( layer_name );
-               PdfOCG current_layer;
-               if( lookup != null )
+               String group_name = layer_info.get( "group" );
+               PdfLayer group_control = null;
+               if( group_name != null )
                {
-                  current_layer = lookup;
-                  System.out.println( "   merging with previous layer of same name (all attributes ignored)"  );
+                  group_control = group_map.get( group_name );
+                  if( group_control == null )
+                  {
+                     group_control = new PdfLayer( group_name, writer );
+                     group_map.put( group_name, group_control );
+                  }
                }
-               else
+
+               PdfOCG current_layer = null;
+
+               layer = new PdfLayer( layer_name, writer );
+
+               // add attributes to layer, but not if merging
+               int export = getTritFromString( layer_info.get( "export"), 2 );
+               if( export != 2 )
                {
-                  layer = new PdfLayer( layer_name, writer );
+                  System.out.println( "   setting export = " + export );
+                  layer.setExport( export == 1 );
+               }
+               int visible = getTritFromString( layer_info.get( "visible" ), 2 );
+               if( visible != 2 )
+               {
+                  System.out.println( "   setting visible = " + visible );
+                  layer.setOn( visible == 1 );
+               }
 
-                  // add attributes to layer, but not if merging
+               int view = getTritFromString( layer_info.get( "view" ), 2 );
+               if( view != 2 )
+               {
+                  System.out.println( "   setting view = " + view );
+                  layer.setView( view == 1 );
+               }
+               String print_type = layer_info.get( "print_type" );
+               if( print_type == null )
+                  print_type = "Print";
+               int print_state = getTritFromString( layer_info.get( "print_state" ), 2 );
+               if( print_state != 2 )
+               {
+                  System.out.println( "   setting print_type = " + print_type + 
+                                      ", print_state = " + print_state );
+                  layer.setPrint( print_type, print_state == 1 );
+               }
 
-                  int export = getTritFromString( layer_info.get( "export"), 2 );
-                  if( export != 2 )
-                  {
-                     System.out.println( "   setting export = " + export );
-                     layer.setExport( export == 1 );
-                  }
-                  int visible = getTritFromString( layer_info.get( "visible" ), 2 );
-                  if( visible != 2 )
-                  {
-                     System.out.println( "   setting visible = " + visible );
-                     layer.setOn( visible == 1 );
-                  }
-
-                  int view = getTritFromString( layer_info.get( "view" ), 2 );
-                  if( view != 2 )
-                  {
-                     System.out.println( "   setting view = " + view );
-                     layer.setView( view == 1 );
-                  }
-                  String print_type = layer_info.get( "print_type" );
-                  if( print_type == null )
-                     print_type = "Print";
-                  int print_state = getTritFromString( layer_info.get( "print_state" ), 2 );
-                  if( print_state != 2 )
-                  {
-                     System.out.println( "   setting print_type = " + print_type + 
-                                         ", print_state = " + print_state );
-                     layer.setPrint( print_type, print_state == 1 );
-                  }
-
-                  float min_zoom = getFloatFromString( layer_info.get( "min_zoom" ), -1f );
-                  float max_zoom = getFloatFromString( layer_info.get( "max_zoom" ), -1f );
-                  if( min_zoom >= 0. || max_zoom >= 0. )
+               float min_zoom = getFloatFromString( layer_info.get( "min_zoom" ), -1f );
+               float max_zoom = getFloatFromString( layer_info.get( "max_zoom" ), -1f );
+               boolean is_zooming = ( min_zoom >= 0. || max_zoom >= 0. );
+               if( is_zooming || group_name != null )
+               {
+                  if( is_zooming )
                   {
                      System.out.println( "   setting min_zoom = " + min_zoom + ", max_zoom = " + max_zoom );
                      layer.setZoom( min_zoom, max_zoom );
+                  }
 
-                     // when we set the zoom we need a secondary layer to control what is happening
-                     // 'cause acrobat doesn't know how to do zoom-inferred visibility properly
+                  // when we set the zoom we need a secondary layer to control what is happening
+                  // 'cause acrobat doesn't know how to do zoom-inferred visibility properly
 
+                  // when we are part of a group, we also need a membership, and the group
+                  // control becomes part of it
+
+                  PdfLayerMembership members = new PdfLayerMembership( writer );
+                  members.setVisibilityPolicy( PdfLayerMembership.ALLON );
+                  layer.setOnPanel( false );
+                  members.addMember( layer );
+
+                  if( group_name == null ) // the group takes care of the control layer
+                  {
                      PdfLayer control_layer = new PdfLayer( layer_name, writer );
-                     PdfLayerMembership members = new PdfLayerMembership( writer );
-                     layer.setOnPanel( false );
-                     members.addMember( layer );
                      members.addMember( control_layer );
-                     members.setVisibilityPolicy( PdfLayerMembership.ALLON );
 
                      // it seems we need to begin/end the layer for it to show up on the panel
                      cb.beginLayer( control_layer );
                      cb.endLayer();
-                     current_layer = members;
                   }
                   else
-                     current_layer = layer;
+                  {
+                     members.addMember( group_control );
+                     System.out.println( "   adding layer to group: " + group_name );
+                  }
 
-                  name_map.put( layer_name, current_layer );
+                  current_layer = members;
                }
+               else
+                  current_layer = layer;
                   
                cb.beginLayer( current_layer );
 
