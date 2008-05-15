@@ -20,7 +20,7 @@ public class Layers3PDF
       Document document = null;
       String[] template_keys = { "path", "title", "author", "subject", "user_pass", "owner_pass" };
       String[] keys = { "path", "name", "export", "print_type", "print_state",
-                        "view", "min_zoom", "max_zoom", "visible", "group" };
+                        "view", "min_zoom", "max_zoom", "visible", "group", "on_panel" };
 
       // this holds the layers that are on the panel to control merged layers
       HashMap<String,PdfLayer> group_map = new HashMap<String,PdfLayer>();
@@ -151,6 +151,12 @@ public class Layers3PDF
                {
                   System.out.println( "   setting visible = " + visible );
                   layer.setOn( visible == 1 );
+               }
+               int on_panel = getTritFromString( layer_info.get( "on_panel" ), 2 );
+               if( on_panel != 2 )
+               {
+                  System.out.println( "   setting on_panel = " + on_panel );
+                  layer.setOnPanel( on_panel == 1 );
                }
 
                int view = getTritFromString( layer_info.get( "view" ), 2 );
