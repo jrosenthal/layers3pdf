@@ -31,10 +31,16 @@ All additional lines of the INI hold variables that define the specific layer of
 Layer Variables include:
 `path, name, export, print_type, print_state, view, min_zoom, max_zoom, on_panel, (locked)`
   * *path=*  The layer variable `path` must be the filepath for a _transparent_ pdf containing just the features in this layer.
-  * *name=*  The layer variable `name` con
-  * *export=*
-  * *print_type=*
-  * *print_state=*
+  * *name=*  The layer variable `name` contains the name of the layer as it will appear on the layer panel in Acrobat.
+  * *export=*  The layer variable `export` controls whether or not the layer will be included for export by Acrobat or other applications.  Acceptable values are 0, 1 or 2. Not setting export is equivalent to `export=2`.
+   * 0 - Never export this layer.
+   * 1 - Always export this layer.
+   * 2 - Export this layer when it is ON.
+  * *print_type=*  The layer variable `print type` contains a string indicating what type of content is being controlled by the layer for printing.  Possible values might include: watermark, trapping, etc.
+  * *print_state=*  The layer variable `print_state` controls whether or not the layer will be oprinted.  Acceptable values are 0, 1 or 2. Not setting print_state is equivalent to `print_state=2`. 
+   * 0 - Never print this layer.
+   * 1 - Always print this layer.
+   * 2 - Print this layer when it is ON.
   * *view=*
   * *min_zoom=*
   * *max_zoom=*
