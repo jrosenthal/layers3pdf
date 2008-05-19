@@ -198,9 +198,13 @@ public class Layers3PDF
                   layer.setOnPanel( false );
                   members.addMember( layer );
 
+                  // for the control layer, set all attributes to the ALWAYS setting; this way,
+                  // the membership will inherit the behaviour of the most restrictive layer
+
                   if( group_name == null ) // the group takes care of the control layer
                   {
                      PdfLayer control_layer = new PdfLayer( layer_name, writer );
+                     setAllAttributes( control_layer );
                      members.addMember( control_layer );
 
                      // it seems we need to begin/end the layer for it to show up on the panel
@@ -209,7 +213,9 @@ public class Layers3PDF
                   }
                   else
                   {
+                     setAllAttributes( group_control );
                      members.addMember( group_control );
+
                      System.out.println( "   adding layer to group: " + group_name );
                   }
 
@@ -264,6 +270,20 @@ public class Layers3PDF
          }
 
       return map;
+   }
+
+   // maximize the "on"-ness of all relevant visibility attributes in a layer;
+   // this method is intended for use with control layers (group, zooming, etc.)
+   // so that the membership that contains the actual layer contents inherits 
+   // the behaviour of the most restricted layer (i.e. the layer with user
+   // specified attributes)
+
+   void setAllAttributes( PdfLayer layer )
+   {
+      layer.setExport( true );
+      layer.setOn( true );
+      layer.setView( true );
+      layer.setPrint( "Print", true );
    }
 
    // extracting values from strings with defaults
