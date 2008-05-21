@@ -27,4 +27,4 @@ Lets follow the logic.
 
 Printing, viewing and exporting function appear to function as alternative forms of ON/OFF.  Therefore, if setVisibilityPolicy is set to ALLON, one layer is set to print_state=ALWAYS, and the other to print_state=IfOn, and the layer is off, then setVisibilityPolicy will tell the layer not to print.  
 
-[We need to check this in more depth, but it appears to be true.]
+We need to check this in more depth, but it appears to be true.
