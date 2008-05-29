@@ -29,7 +29,7 @@ File Variables include:
 All additional lines of the INI hold variables that define the specific layer of the PDF.
 
 Layer Variables include:
-`path, name, export, print_type, print_state, view, min_zoom, max_zoom, on_panel, (locked)`
+`path, name, export, print_type, print_state, view, min_zoom, max_zoom, on_panel, group, (locked)`
   * *path=*  The layer variable `path` must be the filepath for a _transparent_ pdf containing just the features in this layer.
   * *name=*  The layer variable `name` contains the name of the layer as it will appear on the layer panel in Acrobat.
   * *export=*  The layer variable `export` controls whether or not the layer will be included for export by Acrobat or other applications.  Acceptable values are 0, 1 or 2. Not setting export is equivalent to `export=2`.
@@ -45,6 +45,7 @@ Layer Variables include:
   * *min_zoom=*
   * *max_zoom=*
   * *on_panel=*
+  * *group=* The layer variable `group` accepts a string.  All layers with matching `group`s will be represented on the panel by the group, which will control their on/off values.
   * *locked=*
 
 ... this page is under development.
