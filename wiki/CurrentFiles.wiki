@@ -6,7 +6,7 @@ Add your content here.
 
 = Details =
 
-Current File Sizes
-  * [[http://layers3pdf.googlecode.com/svn/trunk/lib/Layers3PDF.class]]
-  * [[http://layers3pdf.googlecode.com/svn/trunk/lib/itext_new.jar]]
-  * [[http://layers3pdf.googlecode.com/svn/trunk/lib/bcprov_new1.4.jar]]
+
+  * [http://layers3pdf.googlecode.com/svn/trunk/lib/Layers3PDF.class]
+  * [http://layers3pdf.googlecode.com/svn/trunk/lib/itext_new.jar]
+  * [http://layers3pdf.googlecode.com/svn/trunk/lib/bcprov_new1.4.jar]
