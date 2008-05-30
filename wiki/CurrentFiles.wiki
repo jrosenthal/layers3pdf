@@ -1,4 +1,5 @@
 #summary Links to the latest edition of the compiled files.
+#labels Featured
 
 = Introduction =
 The following links should link directly to the latest versions of the appropriate files.  Right-click, save-as, etc.
