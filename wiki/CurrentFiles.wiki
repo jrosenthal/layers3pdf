@@ -1,12 +1,12 @@
 #Links to Current Files
 = Introduction =
 
-Add your content here.
+You can use the following
 
 
 = Details =
 
 
-  * [http://layers3pdf.googlecode.com/svn/trunk/lib/Layers3PDF.class]
-  * [http://layers3pdf.googlecode.com/svn/trunk/lib/itext_new.jar]
-  * [http://layers3pdf.googlecode.com/svn/trunk/lib/bcprov_new1.4.jar]
+  * [http://layers3pdf.googlecode.com/svn/trunk/lib/Layers3PDF.class] - 9kb
+  * [http://layers3pdf.googlecode.com/svn/trunk/lib/itext_new.jar] - 1.4 mb
+  * [http://layers3pdf.googlecode.com/svn/trunk/lib/bcprov_new1.4.jar] -1 mb
