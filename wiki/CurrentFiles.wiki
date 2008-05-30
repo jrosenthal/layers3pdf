@@ -1,12 +1,11 @@
 #Links to Current Files
 = Introduction =
-
-You can use the following links.
+The following links should link directly to the latest versions of the appropriate files.  Right-click, save-as, etc.
 
 
 = Details =
 
-
+Compiled Code:
   * [http://layers3pdf.googlecode.com/svn/trunk/lib/Layers3PDF.class] - 9kb
   * [http://layers3pdf.googlecode.com/svn/trunk/lib/itext_new.jar] - 1.4 mb
   * [http://layers3pdf.googlecode.com/svn/trunk/lib/bcprov_new1.4.jar] -1 mb
