@@ -9,4 +9,7 @@ The following links should link directly to the latest versions of the appropria
 Compiled Code:
   * [http://layers3pdf.googlecode.com/svn/trunk/lib/Layers3PDF.class] - 9kb
   * [http://layers3pdf.googlecode.com/svn/trunk/lib/itext_new.jar] - 1.4 mb
-  * [http://layers3pdf.googlecode.com/svn/trunk/lib/bcprov_new1.4.jar] -1 mb
+  * [http://layers3pdf.googlecode.com/svn/trunk/lib/bcprov_new1.4.jar] - 1 mb
+
+Source Code:
+  * [http://layers3pdf.googlecode.com/svn/trunk/src/Layers3PDF.java]
