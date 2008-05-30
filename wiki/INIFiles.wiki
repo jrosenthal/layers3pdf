@@ -1,5 +1,5 @@
 #summary A description of the INI file structure used by Layers3PDF to build a Layered PDF
-#labels Phase-Deploy
+#labels Phase-Deploy,Featured
 
 = INI File Description =
 
