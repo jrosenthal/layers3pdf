@@ -1,4 +1,3 @@
-#Links to Current Files
 = Introduction =
 The following links should link directly to the latest versions of the appropriate files.  Right-click, save-as, etc.
 
