@@ -18,12 +18,14 @@ public class Layers3PDF
    public void process()
    {
       Document document = null;
-      String[] template_keys = { "path", "title", "author", "subject", "user_pass", "owner_pass" };
+      String[] template_keys = { "path", "title", "author", "subject", "user_pass", "owner_pass", "keywords" };
       String[] keys = { "path", "name", "export", "print_type", "print_state",
-                        "view", "min_zoom", "max_zoom", "visible", "group", "on_panel" };
+                        "view", "min_zoom", "max_zoom", "visible", "group", 
+                        "on_panel", "locked" };
 
       // this holds the layers that are on the panel to control merged layers
       HashMap<String,PdfLayer> group_map = new HashMap<String,PdfLayer>();
+      HashMap<String,Integer>group_lock_map = new HashMap<String,Integer>();
 
       try 
       {
@@ -63,13 +65,13 @@ public class Layers3PDF
                   writer.setViewerPreferences( PdfWriter.PageModeUseOC );
                   String user_pass = template_info.get( "user_pass" );
                   String owner_pass = template_info.get( "owner_pass" );
-                  boolean locked = user_pass != null || owner_pass != null;
+                  boolean pw_locked = user_pass != null || owner_pass != null;
                   if( user_pass == null )
                      user_pass = "";
                   if( owner_pass == null )
                      owner_pass = "";
 
-                  if( locked )
+                  if( pw_locked )
                   {
                      System.out.println( "   setting user_pass = \"" + user_pass + 
                                          "\", owner_pass = \"" + owner_pass + "\"" );
@@ -84,6 +86,12 @@ public class Layers3PDF
                   {
                      System.out.println( "   setting title = " + title );
                      document.addTitle( title );
+                  }
+                  String keywords = template_info.get( "keywords" );
+                  if( keywords != null )
+                  {
+                     System.out.println( "   setting keywords = " + keywords );
+                     document.addKeywords( keywords );
                   }
                   String author = template_info.get( "author" );
                   if( author != null )
@@ -159,6 +167,7 @@ public class Layers3PDF
                   layer.setOnPanel( on_panel == 1 );
                }
 
+
                int view = getTritFromString( layer_info.get( "view" ), 2 );
                if( view != 2 )
                {
@@ -179,6 +188,13 @@ public class Layers3PDF
                float min_zoom = getFloatFromString( layer_info.get( "min_zoom" ), -1f );
                float max_zoom = getFloatFromString( layer_info.get( "max_zoom" ), -1f );
                boolean is_zooming = ( min_zoom >= 0. || max_zoom >= 0. );
+               int locked = getTritFromString( layer_info.get( "locked" ), 2 );
+               if( locked == 1 )
+               {
+                  System.out.println( "   setting locked = " + locked );
+                  if( !is_zooming && group_name == null )
+                     writer.lockLayer( layer );
+               }  
                if( is_zooming || group_name != null )
                {
                   if( is_zooming )
@@ -207,6 +223,8 @@ public class Layers3PDF
                      setAllAttributes( control_layer );
                      members.addMember( control_layer );
 
+                     if( locked == 1 )
+                        writer.lockLayer( control_layer );
                      // it seems we need to begin/end the layer for it to show up on the panel
                      cb.beginLayer( control_layer );
                      cb.endLayer();
@@ -215,6 +233,18 @@ public class Layers3PDF
                   {
                      setAllAttributes( group_control );
                      members.addMember( group_control );
+                     Integer already_locked = group_lock_map.get( group_name );
+                     if( locked !=2 && already_locked != null && already_locked != locked ) // lock conflict
+                        System.out.println( "WARNING: layer \"" + layer_name + 
+                                            "\" has locked setting conflicting with other layers in group: " + group_name );
+
+                     if( locked == 1 )
+                     {
+                        writer.lockLayer( group_control );
+                        System.out.println( "   locking group: " + group_name );
+                     }
+                     if( locked != 2 )
+                        group_lock_map.put( group_name, locked );
 
                      System.out.println( "   adding layer to group: " + group_name );
                   }
