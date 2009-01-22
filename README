@@ -19,7 +19,7 @@ then,
 UNIX:
 -----
 java -cp .:../lib:../lib/iText-2.1.4_mod.jar:../lib/bcprov_new1.4.jar Layers3PDF <INI_FILE> <OUTPUT_FILE> (or)
-gij --classpath .:../lib:../lib/iText-2.1.4_mod.jar:../lib/bcprov_new1.4.jar Layers3PDF
+gij --classpath .:../lib:../lib/iText-2.1.4_mod.jar:../lib/bcprov_new1.4.jar Layers3PDF <INI_FILE> <OUTPUT_FILE>
 
 Windows:
 java -cp .;..\lib;..\lib\iText-2.1.4_mod.jar;..\lib\bcprov_new1.4.jar Layers3PDF <INI_FILE> <OUTPUT_FILE>
