@@ -10,10 +10,10 @@ The following links should link directly to the latest versions of the appropria
 Compiled Code:
 Classes:
   * [http://layers3pdf.googlecode.com/svn/trunk/lib/Layers3PDF.class] - 9kb
-  * [http://layers3pdf.googlecode.com/svn-history/r49/trunk/lib/StringUtil.class]
-  * [http://layers3pdf.googlecode.com/svn-history/r49/trunk/lib/DictionaryTool$VPEvent.class]
-  * [http://layers3pdf.googlecode.com/svn-history/r49/trunk/lib/DictionaryTool.class]
-  * [http://layers3pdf.googlecode.com/svn-history/r49/trunk/lib/IniParser.class]
+  * [http://layers3pdf.googlecode.com/svn/trunk/lib/StringUtil.class]
+  * [http://layers3pdf.googlecode.com/svn/trunk/lib/DictionaryTool$VPEvent.class]
+  * [http://layers3pdf.googlecode.com/svn/trunk/lib/DictionaryTool.class]
+  * [http://layers3pdf.googlecode.com/svn/trunk/lib//IniParser.class]
 
 Jars:
 ~~  * [http://layers3pdf.googlecode.com/svn/trunk/lib/itext_new.jar] - 1.4 mb~~
@@ -21,5 +21,7 @@ Jars:
   * [http://layers3pdf.googlecode.com/svn/trunk/lib/bcprov_new1.4.jar] - 1 mb
   * [http://layers3pdf.googlecode.com/svn-history/r49/trunk/lib/iText-2.1.4_mod.jar] - 1 mb
 
+All Classes and Jars must be in a directory called layers3pdf
+
 Source Code:
-  * [http://layers3pdf.googlecode.com/svn/trunk/src/Layers3PDF.java]
+~~  * [http://layers3pdf.googlecode.com/svn/trunk/src/Layers3PDF.java]~~
