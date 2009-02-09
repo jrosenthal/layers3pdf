@@ -21,7 +21,15 @@ Jars:
   * [http://layers3pdf.googlecode.com/svn/trunk/lib/bcprov_new1.4.jar] - 1 mb
   * [http://layers3pdf.googlecode.com/svn-history/r49/trunk/lib/iText-2.1.4_mod.jar] - 1 mb
 
-All Classes and Jars must be in a directory called layers3pdf
+All Classes must be in a sub-directory called layers3pdf.
+ex:
+foo/
+   bcprov_new1.4.jar
+   iText-2.1.4_mod.jar
+   layers3pdf/
+            Layers3PDF.class
+               ...
+
 
 Source Code:
 ~~  * [http://layers3pdf.googlecode.com/svn/trunk/src/Layers3PDF.java]~~
