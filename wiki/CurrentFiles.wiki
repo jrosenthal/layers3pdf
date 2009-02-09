@@ -1,5 +1,4 @@
 #summary Links to the latest edition of the compiled files.
-#labels Featured
 
 = Introduction =
 The following links should link directly to the latest versions of the appropriate files.  Right-click, save-as, etc.
@@ -13,7 +12,7 @@ Classes:
   * [http://layers3pdf.googlecode.com/svn/trunk/lib/StringUtil.class]
   * [http://layers3pdf.googlecode.com/svn/trunk/lib/DictionaryTool$VPEvent.class]
   * [http://layers3pdf.googlecode.com/svn/trunk/lib/DictionaryTool.class]
-  * [http://layers3pdf.googlecode.com/svn/trunk/lib//IniParser.class]
+  * [http://layers3pdf.googlecode.com/svn/trunk/lib/IniParser.class]
 
 Jars:
 ~~  * [http://layers3pdf.googlecode.com/svn/trunk/lib/itext_new.jar] - 1.4 mb~~
@@ -23,13 +22,18 @@ Jars:
 
 All Classes must be in a sub-directory called layers3pdf.
 ex:
+{{{
 foo/
    bcprov_new1.4.jar
    iText-2.1.4_mod.jar
    layers3pdf/
             Layers3PDF.class
+            StringUtil.class
+            DictionaryTool$VPEvent.class
+            DictionaryTool.class
+            IniParser.class
                ...
-
+}}}
 
 Source Code:
 ~~  * [http://layers3pdf.googlecode.com/svn/trunk/src/Layers3PDF.java]~~
