@@ -35,5 +35,12 @@ foo/
                ...
 }}}
 
+A sample command line might be as follows:
+in c:\foo\
+
+java -cp .;iText-2.1.4_mod.jar;bcprov_new1.4.jar layers3pdf.Layers3PDF "C:\foo\demo1\demowGS2.ini" "C:\foo\demo1\foo.pdf"
+
+
+
 Source Code:
 ~~  * [http://layers3pdf.googlecode.com/svn/trunk/src/Layers3PDF.java]~~
