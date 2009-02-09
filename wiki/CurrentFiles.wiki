@@ -15,8 +15,8 @@ Classes:
   * [http://layers3pdf.googlecode.com/svn/trunk/lib/IniParser.class]
 
 Jars:
-~~  * [http://layers3pdf.googlecode.com/svn/trunk/lib/itext_new.jar] - 1.4 mb~~
-~~  * [http://layers3pdf.googlecode.com/svn/trunk/lib/iText-2.1.2u.jar] - 1 mb~~
+  * ~~ [http://layers3pdf.googlecode.com/svn/trunk/lib/itext_new.jar] - 1.4 mb~~
+  * ~~ [http://layers3pdf.googlecode.com/svn/trunk/lib/iText-2.1.2u.jar] - 1 mb~~
   * [http://layers3pdf.googlecode.com/svn/trunk/lib/bcprov_new1.4.jar] - 1 mb
   * [http://layers3pdf.googlecode.com/svn-history/r49/trunk/lib/iText-2.1.4_mod.jar] - 1 mb
 
