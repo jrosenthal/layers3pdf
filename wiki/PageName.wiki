@@ -13,8 +13,8 @@
 ||dict=Measure|key=DCS|type=dict_ref|value=PROJCS||
 ||dict=MyVP|vp=1|key=Type|type=name|value=Viewport||
 ||dict=MyVP|vp=1|key=Measure|type=dict_ref|value=Measure||
-||*dict=MyVP|vp=1|key=BBox|type=float_array|value=161.82,19.51,771.24,592.21*||The part of the page, in 1/72 of an inch, that should be georeferenced/has the map.  Coordinates are x,y pairs, with the origin at the BOTTOM LEFT||`MapAnnotation[2][1][2]`, divide by 100,
-subtract Y values from page height`*`72`||
+||*dict=MyVP|vp=1|key=BBox|type=float_array|value=161.82,19.51,771.24,592.21*||The part of the page, in 1/72 of an inch, that should be georeferenced/has the map.  Coordinates are x,y pairs, with the origin at the BOTTOM LEFT||`MapAnnotation[2][1][2], divide by 100,
+subtract Y values from page height*72`||
 
 = Details =
 
