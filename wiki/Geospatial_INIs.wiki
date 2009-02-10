@@ -53,3 +53,7 @@ Note: The polygon description need not be explicitly closed by
 repeating the first point values as a final point.
 
 (Adobe Supplement to ISO 3200, p 50)
+
+=Problems=
+
+All attempts so far generate a NE-SW and NW-SE meridian (ie: one of the values does not change as one traverses the diagonal).  WEIRD.  Any ideas?
