@@ -1,7 +1,7 @@
 #summary Understanding Geospatial Syntax
 
 = Introduction =
-*||INI Line||Explanation||Maptitude Notes||*
+||*INI Line*||*Explanation*||*Maptitude Notes*||
 ||dict=Measure|key=Subtype|type=name|value=GEO||
 ||*dict=Measure|key=Bounds|type=float_array|value=0.0,0.0,0.0,1.0,1.0,1.0,1.0,0.0*||
 ||dict=Measure|key=PDU|type=name_array|value=M,SQM,GRD||
