@@ -17,7 +17,21 @@
 
 = Details =
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+==GPTS==
+array (Required; ExtensionLevel 3) An array of numbers taken pairwise, 
+defining points in geographic space as degrees of latitude and 
+longitude. These values are based on the geographic coordinate 
+system described in the GCS dictionary. (Note that any projected 
+coordinate system includes an underlying geographic coordinate 
+system.)
+
+(Adobe Supplement to ISO 3200, p 51)
+
+==LPTS==
+array (Optional; ExtensionLevel 3) An array of numbers taken pairwise that 
+define points in a 2D unit square. The unit square is mapped to the 
+rectangular bounds of the viewport, image XObject, or forms 
+XObject that contain the measure dictionary. This array contains 
+the same number of number pairs as the GPTS array; each number 
+pair is the unit square object position corresponding to the 
+geospatial position in the GPTS array.
