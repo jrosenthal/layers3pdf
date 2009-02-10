@@ -37,3 +37,19 @@ pair is the unit square object position corresponding to the
 geospatial position in the GPTS array.
 
 (Adobe Supplement to ISO 3200, p 51)
+
+==Bounds==
+
+array (Optional; ExtensionLevel 3) An array of numbers taken pairwise that 
+define a series of points that describes the bounds of an area for 
+which geospatial transformations are valid. For maps, this 
+bounding polygon is know as a neatline. These numbers are 
+expressed relative to a unit square that describes the BBox 
+associated with a Viewport or form XObject, or the bounds of an 
+image Xobject. 
+If not present, the default values define a rectangle describing the 
+full unit square, with values of [0.0 0.0 0.0 1.0 1.0 1.0 1.0 0.0]. 
+Note: The polygon description need not be explicitly closed by 
+repeating the first point values as a final point.
+
+(Adobe Supplement to ISO 3200, p 50)
