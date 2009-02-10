@@ -1,11 +1,11 @@
 #summary Understanding Geospatial Syntax
 
 = Introduction =
-
+||INI Line||Explanation||Maptitude Notes||
 ||dict=Measure|key=Subtype|type=name|value=GEO||
 ||*dict=Measure|key=Bounds|type=float_array|value=0.0,0.0,0.0,1.0,1.0,1.0,1.0,0.0*||
 ||dict=Measure|key=PDU|type=name_array|value=M,SQM,GRD||
-||*dict=Measure|key=LPTS|type=float_array|value=0.0,0.0,1.0,1.0*||??Description of GPTS coordinate locations in block space?||
+||*dict=Measure|key=LPTS|type=float_array|value=0.0,0.0,1.0,1.0*||??Description of GPTS coordinate locations??||
 ||*dict=Measure|key=GPTS|type=float_array|value=42.756143,-71.041457,42.763858,-71.030150*||??Described reference coordinates referred to by LPTS??||
 ||dict=PROJCS|key=Type|type=name|value=PROJCS||
 ||*dict=PROJCS|key=EPSG|type=int|value=26986*||www.spatialreference.org||
