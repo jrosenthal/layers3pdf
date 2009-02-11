@@ -38,10 +38,17 @@ public class Layers3PDF
     HashMap<String,PdfLayer> group_map = new HashMap<String,PdfLayer>();
     HashMap<String,Integer>group_lock_map = new HashMap<String,Integer>();
 
+    int arg_start = 0;
+    boolean verbose = false;
+    if( args[0].equals( "-v" ) )
+    {
+      verbose = true;
+      ++arg_start;
+    }
     try 
     {
       // open the document
-      IniParser parser = new IniParser( args[0] );
+      IniParser parser = new IniParser( args[arg_start] );
       PdfWriter writer = null;
 
       PdfContentByte cb = null;
@@ -70,7 +77,7 @@ public class Layers3PDF
             PdfReader base = new PdfReader( layer_path );
             document = new Document( base.getPageSizeWithRotation(1) );
             writer = PdfWriter.getInstance( document, 
-                                            new FileOutputStream( args[1] ) );
+                                            new FileOutputStream( args[arg_start+1] ) );
 
             writer.setViewerPreferences( PdfWriter.PageModeUseOC );
             System.out.println( "   setting Pdf Version 1.7" );
@@ -127,9 +134,16 @@ public class Layers3PDF
 
           // layers are parsed here
           HashMap<String,String> layer_info = parser.parseLine( keys );
-
+          
           if( layer_info == null )
             break; // end of file
+
+          if( verbose )
+          {
+            System.out.println( "VV: got line info:" );
+            for( String key : layer_info.keySet() )
+              System.out.println( "VV: got key=" + key + ", value=" + layer_info.get( key ) );
+          }
 
           // if the dictionary picks it up, it's not a layer definition
           if( dict_tool.parse( layer_info, writer ) ) 
@@ -297,7 +311,7 @@ public class Layers3PDF
     catch(IOException ioe) { System.err.println( "IO exception: " + ioe.getMessage()); }
     catch(DataFormatException dfe) { System.err.println( "Data format exception: " + dfe.getMessage()); }
 
-    System.out.println( "wrote output to: " + args[1] );
+    System.out.println( "wrote output to: " + args[arg_start+1] );
   }
 
   // maximize the "on"-ness of all relevant visibility attributes in a layer;
