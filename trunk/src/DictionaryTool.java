@@ -95,14 +95,21 @@ public class DictionaryTool
         obj = new PdfNumber( StringUtil.getIntFromString( value, 0 ) );
       else if( type.equals( "double" ) )
         obj = new PdfNumber( StringUtil.getDoubleFromString( value, 0. ) );
-      else if( type.equals( "float_array" ) )
+      else if( type.equals( "float_array" ) || type.equals( "point_array" ) )
       {
         String[] svals = value.split( "," );
         float[] vals = new float[svals.length];
 
         for( int i=0; i<svals.length; ++i )
           vals[i] = Float.parseFloat( svals[i] );
-        
+      
+        if( type.equals( "point_array" ) && StringUtil.getBoolFromString( info.get( "fix_coords" ), true ) )
+        {
+          float[] fixed_vals = fixCoords( info, vals );
+          System.out.println( "fixed coords: " + join( vals ) + " => " + join( fixed_vals ) );
+          vals = fixed_vals;
+        }
+
         obj = new PdfArray( vals );
       }
       else if( type.equals( "name_array" ) )
@@ -142,6 +149,57 @@ public class DictionaryTool
 
     return false;
   }
+
+  String join( float[] vals )
+  {
+    if( vals.length == 0 )
+      return "";
+
+    String result = Float.toString( vals[0] );
+    for( int i=1; i<vals.length; ++i )
+      result += "," + Float.toString( vals[i] );
+
+    return result;
+  }
+  
+  float[] fixCoords( HashMap<String,String> info, float[] vals ) throws DataFormatException
+  {
+    float[] fixed_vals = null;
+
+    if( vals.length % 2 != 0 )
+      throw new DataFormatException( "point array does not have an even number of values" );
+          
+    int rotation = Integer.parseInt( info.get( "base_rotation" ) );
+    if( rotation != 90 && rotation != 0 )
+      throw new DataFormatException( "fix_coords is only supported for portrait and landscape layouts" );
+
+    if( rotation == 90 ) // landscape
+    { 
+      fixed_vals = new float[vals.length];
+      float translate_amount = 1;
+
+      // figure out what to translate by
+      for( float v : vals )
+        if( v > 1. )
+        {
+          translate_amount = Float.parseFloat( info.get( "base_height" ) );
+          break;
+        }
+
+      // switch x/y, negative primary coordinate, translate
+      for( int i=0; i<vals.length; i+=2 )
+      {
+        // primnary coord in landscape is Y, with different origin
+        fixed_vals[i] = -vals[i+1] + translate_amount;
+        fixed_vals[i+1] = vals[i];
+      }
+      
+      return fixed_vals;
+    }
+    else
+      return vals;
+  }
+    
 
   PdfDictionary vivify( String full_name )
   {
